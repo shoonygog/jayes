@@ -1,0 +1,87 @@
+<title>Jayes</title>
+
+<textarea id="js"></textarea>
+<button onclick="executejs(document.getElementById('js').value)">Run</button>
+<textarea id="logs" readonly></textarea>
+
+<script>
+    function executejs(js) {
+        document.getElementById("logs").value = "";
+        try {
+            eval(js);
+        } catch(err) {
+            document.getElementById("logs").value = err.message;
+        }
+    }
+
+    console.log = function() {
+        document.getElementById("logs").value += [...arguments].join(' ') + "\n";
+    };
+
+    console.warn = function() {
+        document.getElementById("logs").value += [...arguments].join(' ') + "\n";
+    };
+
+    console.error = function() {
+        document.getElementById("logs").value += [...arguments].join(' ') + "\n";
+    };
+
+    console.clear = function() {
+        document.getElementById("logs").value = "";
+    };
+</script>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
+    body {
+        overflow: hidden;
+    }
+
+    textarea {
+        font-family: 'Space Mono', monospace;
+        font-size: 100%;
+        height: 100%;
+        width: 45%;
+        resize: none;
+        text-align: left;
+        outline: none;
+        border: none;
+        border-top: 3px solid;
+        border-left: 3px solid;
+        border-radius: 5px 0px 0px 0px;
+    }
+
+    #js:focus {
+        border-top: 4px solid;
+        border-left: 4px solid;
+    }
+
+    #logs {
+        text-align: right;
+        border-left: none;
+        border-right: 3px solid;
+        border-radius: 0px 5px 0px 0px;
+        cursor: default;
+    }
+
+    button {
+        font-family: 'Space Mono', monospace;
+        font-size: 125%;
+        height: 5%;
+        width: 9.5%;
+        background-color: white;
+        border: none;
+        border-top: 3px solid;
+        padding-top: 5%;
+        cursor: pointer;
+    }
+
+    button:hover {
+        border-top: 4px solid;
+    }
+
+    button:active {
+        border-top: 5px solid;
+    }
+</style>
