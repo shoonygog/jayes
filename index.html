@@ -4,6 +4,8 @@
 <button onclick="executejs(document.getElementById('js').value)">Run</button>
 <textarea id="logs" readonly></textarea>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+
 <script>
     function executejs(js) {
         document.getElementById("logs").value = "";
